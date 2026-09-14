@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "item_code": "SKU001",
+      "item_name": "Demo Material A",
+      "item_group": "Raw Material"
+    },
+    {
+      "item_code": "SKU002",
+      "item_name": "Demo Material B",
+      "item_group": "Raw Material"
+    }
+  ]
+}

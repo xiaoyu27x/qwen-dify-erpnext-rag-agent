@@ -1,0 +1,249 @@
+app:
+  description: ''
+  icon: 9b845bac-365e-45ae-a1fb-d684271ae457
+  icon_background: ''
+  icon_type: image
+  mode: advanced-chat
+  name: ERP料号查询
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.58@a9925faf50d7bc4d247fe64b92c809cd828dbdb71ee40a04590c2263d2cb6c0c
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: http-request
+      id: 1786610104332-source-1786610147082-target
+      selected: false
+      source: '1786610104332'
+      sourceHandle: source
+      target: '1786610147082'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: llm
+      id: 1786610147082-source-llm-target
+      selected: false
+      source: '1786610147082'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables: []
+      height: 71
+      id: '1786610104332'
+      position:
+        x: 360.60624389648444
+        y: 160
+      positionAbsolute:
+        x: 360.60624389648444
+        y: 160
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1786610147082'
+          - body
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen3.5-9b
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 364f4428-0cc3-42af-8f25-e46a9a3c2072
+          role: system
+          text: '你是企业 ERPNext 数据查询助手。
+
+
+            ERPNext API 返回数据：
+
+            {{#context#}}
+
+
+            请根据上述 ERPNext API 返回数据回答用户的问题。
+
+
+            规则：
+
+            1. 只能依据 API 返回数据回答。
+
+            2. 不得编造数据。
+
+            3. 如果返回数据包含物料编号，直接列出。
+
+            4. 如果没有相关数据，明确说明没有查询到。
+
+            5. 不要要求用户再次提供 API 数据，因为 API 数据已经通过上下文提供。'
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: llm
+      position:
+        x: 360.60624389648444
+        y: 418.99999999999994
+      positionAbsolute:
+        x: 360.60624389648444
+        y: 418.99999999999994
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#llm.text#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 101
+      id: answer
+      position:
+        x: 367
+        y: 527
+      positionAbsolute:
+        x: 367
+        y: 527
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        headers: Authorization:token 3229013524858b0:972094d0a4be534
+        method: get
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: true
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: http://192.168.191.143:8080/api/resource/Item
+        variables: []
+      height: 135
+      id: '1786610147082'
+      position:
+        x: 360.60624389648444
+        y: 255
+      positionAbsolute:
+        x: 360.60624389648444
+        y: 255
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    viewport:
+      x: -204.71239455995098
+      y: -59.947737017517454
+      zoom: 1
+  rag_pipeline_variables: []

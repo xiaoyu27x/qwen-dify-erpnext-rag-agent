@@ -1,0 +1,1201 @@
+app:
+  description: ''
+  icon: 189d69e4-b33f-4d98-896d-9df4deea52ee
+  icon_background: ''
+  icon_type: image
+  mode: advanced-chat
+  name: ERP呆滞料查询
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.58@a9925faf50d7bc4d247fe64b92c809cd828dbdb71ee40a04590c2263d2cb6c0c
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 1388eb50-fb28-4725-b283-1ef1fc53a60f
+    name: idle_items
+    selector:
+    - conversation
+    - idle_items
+    value: []
+    value_type: array[object]
+  - description: ''
+    id: 1db3d135-667f-43d0-8713-b14d4eea43c6
+    name: report_text
+    selector:
+    - conversation
+    - report_text
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: http-request
+      id: llm-source-1787134562965-target
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: '1787134562965'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1787134562965-source-1787142661463-target
+      selected: false
+      source: '1787134562965'
+      sourceHandle: source
+      target: '1787142661463'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+      id: 1787142661463-source-1787143400229-target
+      selected: false
+      source: '1787142661463'
+      sourceHandle: source
+      target: '1787143400229'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1787143400229'
+        sourceType: iteration-start
+        targetType: code
+      id: 1787143400229start-source-1787146956699-target
+      selected: false
+      source: 1787143400229start
+      sourceHandle: source
+      target: '1787146956699'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1787143400229'
+        sourceType: code
+        targetType: http-request
+      id: 1787146956699-source-1787144201806-target
+      selected: false
+      source: '1787146956699'
+      sourceHandle: source
+      target: '1787144201806'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1787143400229'
+        sourceType: http-request
+        targetType: code
+      id: 1787144201806-source-1787206327629-target
+      selected: false
+      source: '1787144201806'
+      sourceHandle: source
+      target: '1787206327629'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: code
+      id: 1787143400229-source-1787207979797-target
+      selected: false
+      source: '1787143400229'
+      sourceHandle: source
+      target: '1787207979797'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1787207979797-source-1787209260896-target
+      selected: false
+      source: '1787207979797'
+      sourceHandle: source
+      target: '1787209260896'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: assigner
+      id: 1787209260896-source-1787218314482-target
+      selected: false
+      source: '1787209260896'
+      sourceHandle: source
+      target: '1787218314482'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: assigner
+        targetType: http-request
+      id: 1787218314482-source-1787222897989-target
+      selected: false
+      source: '1787218314482'
+      sourceHandle: source
+      target: '1787222897989'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1787222897989-source-1787295903749-target
+      selected: false
+      source: '1787222897989'
+      sourceHandle: source
+      target: '1787295903749'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1787295903749-source-1787235306977-target
+      source: '1787295903749'
+      sourceHandle: source
+      target: '1787235306977'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1787125582943-source-llm-target
+      source: '1787125582943'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: '1'
+        selected: false
+        title: 用户输入
+        type: start
+        variables: []
+      height: 99
+      id: '1787125582943'
+      position:
+        x: -42.27677850644449
+        y: 222.8732630447118
+      positionAbsolute:
+        x: -42.27677850644449
+        y: 222.8732630447118
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 2.解析呆滞料查询条件
+        memory:
+          query_prompt_template: '请解析下面用户输入：
+
+            {{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen3.5-9b
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 8f96e977-75fe-4f99-b44e-bd29348e5fd2
+          role: system
+          text: "你是一个制造业 ERP 库存查询条件解析器。\n\n你的任务不是回答用户问题，也不是分析库存原因。\n\n你的唯一任务是：\n把用户关于\
+            \ ERPNext 库存、呆滞料、库存金额、库龄等自然语言问题，\n转换成标准查询参数。\n\n需要识别以下字段：\n\n1. item_code\n\
+            \   物料编码，例如 RM001、MU001、SKU001。\n   如果用户没有指定，返回空字符串。\n\n2. warehouse\n\
+            \   仓库名称。\n   如果没有指定，返回空字符串。\n\n3. item_group\n   物料组。\n   常见值：\n   Raw\
+            \ Material\n   Finished Goods\n   Semi Finished Goods\n   Packing Material\n\
+            \   如果没有指定，返回空字符串。\n\n4. idle_days\n   无库存移动天数。\n   如果用户没有明确指定，默认 180。\n\
+            \n   时间转换规则：\n   1个月 = 30天\n   3个月 = 90天\n   半年 = 180天\n   1年 = 365天\n\
+            \   2年 = 730天\n\n5. min_stock_value\n   最低库存金额。\n   如果没有指定，返回 0。\n\n \
+            \  金额转换：\n   5万 = 50000\n   10万 = 100000\n   100万 = 1000000\n\n6. analysis_type\n\
+            \   查询类型，只能返回以下值之一：\n\n   stagnant_inventory\n   single_item\n   inventory_value\n\
+            \   inventory_age\n   risk_analysis\n\n判断规则：\n\n如果用户要求查询呆滞物料：\nanalysis_type\
+            \ = stagnant_inventory\n\n如果用户明确指定某个物料，例如 MU001：\nanalysis_type = single_item\n\
+            \n如果主要询问库存金额：\nanalysis_type = inventory_value\n\n如果主要询问库龄：\nanalysis_type\
+            \ = inventory_age\n\n如果询问为什么呆滞、风险、原因：\nanalysis_type = risk_analysis\n\
+            \nscope 判断规则：\n\n如果指定了 item_code：\nscope = single_item\n\n如果没有指定 item_code，但指定了\
+            \ warehouse：\nscope = warehouse\n\n如果没有指定 item_code 和 warehouse，但指定了 item_group：\n\
+            scope = item_group\n\n如果 item_code、warehouse、item_group 都没有指定：\nscope\
+            \ = all\n\nscope 严禁返回空字符串。\n\n严禁：\n- 回答用户问题\n- 自己生成 ERP 数据\n- 猜测不存在的数据\n\
+            - 输出解释性文字"
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              analysis_type:
+                type: string
+              idle_days:
+                type: number
+              item_code:
+                description: ''
+                type: string
+              item_group:
+                type: string
+              min_stock_value:
+                type: number
+              scope:
+                type: string
+              warehouse:
+                type: string
+            required: []
+            type: object
+        structured_output_enabled: true
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 114
+      id: llm
+      position:
+        x: 258.8546954835233
+        y: 224.85081828596088
+      positionAbsolute:
+        x: 258.8546954835233
+        y: 224.85081828596088
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        headers: Authorization:token 3229013524858b0:972094d0a4be534
+        method: get
+        params: 'limit_page_length:1000
+
+          fields:["item_code","warehouse","actual_qty","projected_qty","reserved_qty","ordered_qty","valuation_rate","stock_value"]'
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求：获取库存数
+        type: http-request
+        url: http://192.168.191.143:8080/api/resource/Bin
+        variables: []
+      height: 135
+      id: '1787134562965'
+      position:
+        x: 556.144
+        y: 216.30450252478295
+      positionAbsolute:
+        x: 556.144
+        y: 216.30450252478295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        code: "import json\n\ndef main(body: str, min_stock_value: float) -> dict:\n\
+          \n    # 1. HTTP body 字符串转 JSON\n    data = json.loads(body)\n\n    # ERPNext\
+          \ REST API 返回格式通常为：\n    # {\"data\": [...]}\n    rows = data.get(\"data\"\
+          , [])\n\n    # 2. 过滤库存金额\n    filtered = []\n\n    for row in rows:\n  \
+          \      stock_value = row.get(\"stock_value\", 0) or 0\n\n        try:\n\
+          \            stock_value = float(stock_value)\n        except:\n       \
+          \     stock_value = 0\n\n        if stock_value > float(min_stock_value):\n\
+          \            filtered.append(row)\n\n    # 3. 返回结果\n    return {\n     \
+          \   \"filtered_data\": filtered,\n        \"count\": len(filtered)\n   \
+          \ }"
+        code_language: python3
+        outputs:
+          count:
+            children: null
+            type: number
+          filtered_data:
+            children: null
+            type: array[object]
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1787134562965'
+          - body
+          value_type: string
+          variable: body
+        - value_selector:
+          - llm
+          - structured_output
+          - min_stock_value
+          value_type: object
+          variable: min_stock_value
+      height: 50
+      id: '1787142661463'
+      position:
+        x: 117.41440000000006
+        y: 418.85600000000005
+      positionAbsolute:
+        x: 117.41440000000006
+        y: 418.85600000000005
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        desc: 5.HTTP 查询 ERPNext Stock Ledger Entry
+        error_handle_mode: terminated
+        flatten_output: true
+        height: 391
+        is_parallel: false
+        iterator_input_type: array[object]
+        iterator_selector:
+        - '1787142661463'
+        - filtered_data
+        output_selector:
+        - '1787206327629'
+        - result
+        output_type: array[object]
+        parallel_nums: 10
+        selected: true
+        start_node_id: 1787143400229start
+        title: 迭代
+        type: iteration
+        width: 422
+      height: 391
+      id: '1787143400229'
+      position:
+        x: 9.343999999999937
+        y: 534.5167999999999
+      positionAbsolute:
+        x: 9.343999999999937
+        y: 534.5167999999999
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 422
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1787143400229start
+      parentId: '1787143400229'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 33.34399999999994
+        y: 602.5167999999999
+      selectable: false
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        headers: 'Authorization:token 3229013524858b0:972094d0a4be534
+
+          Content-Type:application/json'
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1787143400229'
+        method: get
+        params: 'fields:["item_code","warehouse","posting_date","posting_time","actual_qty","voucher_type","voucher_no"]
+
+          filters:{{#1787146956699.filters#}}
+
+          order_by:posting_date desc,posting_time desc'
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求 2：获取最后库存事务日期
+        type: http-request
+        url: http://192.168.191.143:8080/api/resource/Stock%20Ledger%20Entry
+        variables: []
+      height: 151
+      id: '1787144201806'
+      parentId: '1787143400229'
+      position:
+        x: 126
+        y: 142
+      positionAbsolute:
+        x: 135.34399999999994
+        y: 676.5167999999999
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        code: "import json\n\ndef main(item: dict) -> dict:\n    item_code = item.get(\"\
+          item_code\", \"\")\n    warehouse = item.get(\"warehouse\", \"\")\n\n  \
+          \  return {\n        \"item_code\": item_code,\n        \"warehouse\": warehouse,\n\
+          \        \"filters\": json.dumps([\n            [\"item_code\", \"=\", item_code],\n\
+          \            [\"warehouse\", \"=\", warehouse]\n        ], ensure_ascii=False)\n\
+          \    }"
+        code_language: python3
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1787143400229'
+        outputs:
+          filters:
+            children: null
+            type: string
+          item_code:
+            children: null
+            type: string
+          warehouse:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1787143400229'
+          - item
+          value_type: object
+          variable: item
+      height: 50
+      id: '1787146956699'
+      parentId: '1787143400229'
+      position:
+        x: 127
+        y: 65
+      positionAbsolute:
+        x: 136.34399999999994
+        y: 599.5167999999999
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        code: "import json\nfrom datetime import datetime, date\n\n\ndef main(body:\
+          \ str, idle_days: int, item: dict):\n    try:\n        data = json.loads(body)\
+          \ if isinstance(body, str) else body\n    except Exception:\n        data\
+          \ = {}\n\n    rows = data.get(\"data\", []) if isinstance(data, dict) else\
+          \ []\n\n    # 直接从当前迭代 item 里拿库存信息\n    item_code = item.get(\"item_code\"\
+          , \"\")\n    warehouse = item.get(\"warehouse\", \"\")\n    actual_qty =\
+          \ item.get(\"actual_qty\", 0)\n    valuation_rate = item.get(\"valuation_rate\"\
+          , 0)\n    stock_value = item.get(\"stock_value\", 0)\n\n    valid_rows =\
+          \ []\n\n    for row in rows:\n        posting_date = row.get(\"posting_date\"\
+          )\n\n        if posting_date:\n            try:\n                d = datetime.strptime(\n\
+          \                    str(posting_date)[:10],\n                    \"%Y-%m-%d\"\
+          \n                ).date()\n\n                valid_rows.append((d, row))\n\
+          \            except Exception:\n                pass\n\n    # 没有库存流水\n \
+          \   if not valid_rows:\n        return {\n            \"result\": {\n  \
+          \              \"item_code\": item_code,\n                \"warehouse\"\
+          : warehouse,\n                \"actual_qty\": actual_qty,\n            \
+          \    \"valuation_rate\": valuation_rate,\n                \"stock_value\"\
+          : stock_value,\n                \"last_date\": \"\",\n                \"\
+          idle_days_actual\": 999999,\n                \"idle_days_limit\": int(idle_days),\n\
+          \                \"is_idle\": True\n            }\n        }\n\n    # 找最新库存变动日期\n\
+          \    last_date, last_row = max(valid_rows, key=lambda x: x[0])\n\n    days\
+          \ = (date.today() - last_date).days\n\n    return {\n        \"result\"\
+          : {\n            \"item_code\": item_code,\n            \"warehouse\": warehouse,\n\
+          \            \"actual_qty\": actual_qty,\n            \"valuation_rate\"\
+          : valuation_rate,\n            \"stock_value\": stock_value,\n         \
+          \   \"last_date\": last_date.strftime(\"%Y-%m-%d\"),\n            \"idle_days_actual\"\
+          : days,\n            \"idle_days_limit\": int(idle_days),\n            \"\
+          is_idle\": days >= int(idle_days)\n        }\n    }"
+        code_language: python3
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1787143400229'
+        outputs:
+          result:
+            children: null
+            type: object
+        selected: false
+        title: 代码执行 3-计算呆滞天数
+        type: code
+        variables:
+        - value_selector:
+          - '1787144201806'
+          - body
+          value_type: string
+          variable: body
+        - value_selector:
+          - llm
+          - structured_output
+          - idle_days
+          value_type: object
+          variable: idle_days
+        - value_selector:
+          - '1787143400229'
+          - item
+          value_type: object
+          variable: item
+      height: 50
+      id: '1787206327629'
+      parentId: '1787143400229'
+      position:
+        x: 127.32800000000003
+        y: 318.2559999999999
+      positionAbsolute:
+        x: 136.67199999999997
+        y: 852.7727999999997
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        code: "import json\n\ndef main(data: list):\n    idle_items = []\n\n    for\
+          \ item in data:\n        if item.get(\"is_idle\") is True:\n           \
+          \ idle_items.append(item)\n\n    return {\n        \"idle_items\": idle_items,\n\
+          \        \"idle_items_text\": json.dumps(\n            idle_items,\n   \
+          \         ensure_ascii=False,\n            indent=2\n        ),\n      \
+          \  \"count\": len(idle_items)\n    }"
+        code_language: python3
+        outputs:
+          count:
+            children: null
+            type: number
+          idle_items:
+            children: null
+            type: array[object]
+          idle_items_text:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 4
+        type: code
+        variables:
+        - value_selector:
+          - '1787143400229'
+          - output
+          value_type: array[object]
+          variable: data
+      height: 50
+      id: '1787207979797'
+      position:
+        x: 556.144
+        y: 368.0528000000001
+      positionAbsolute:
+        x: 556.144
+        y: 368.0528000000001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen3.5-9b
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: f8f4cc32-9b0a-4d74-91dd-8b5a8768121e
+          role: system
+          text: '你是一名资深制造业供应链、ERP、库存管理和SAP PP/MM顾问。
+
+
+            你的任务是根据ERPNext提供的库存和最后业务日期数据，对呆滞库存进行分析，并生成专业的库存呆滞分析报告。
+
+
+            分析原则：
+
+
+            1. is_idle=true 表示该物料已经满足呆滞库存判定条件。
+
+            2. idle_days_actual 表示实际已经多少天没有发生有效业务。
+
+            3. idle_days_limit 表示公司定义的呆滞判定天数。
+
+            4. actual_qty 表示当前库存数量。
+
+            5. valuation_rate 表示库存单位价值。
+
+            6. stock_value 表示当前库存金额。
+
+            7. last_date 表示最后一次有效库存业务日期。
+
+            8. warehouse 表示库存所在仓库。
+
+
+            你必须区分“系统能够确定的事实”和“根据现有数据推测的原因”。
+
+
+            对于无法从现有ERP数据直接确定的呆滞原因，不允许虚构事实，应明确写为“可能原因”或“建议进一步核查”。
+
+
+            重点从以下角度分析可能的呆滞原因：
+
+
+            - 长期无生产领用
+
+            - 长期无销售出库
+
+            - 采购过量
+
+            - 安全库存设置偏高
+
+            - MRP参数不合理
+
+            - 需求预测偏差
+
+            - 产品停产或工程变更
+
+            - BOM变更导致物料不再使用
+
+            - 客户订单取消
+
+            - 最小采购量MOQ导致库存积压
+
+            - 项目结束剩余物料
+
+            - 仓库调拨后长期未使用
+
+            - 替代料启用导致旧料积压
+
+
+            处理建议可以包括：
+
+
+            - 暂停采购
+
+            - 调整MRP参数
+
+            - 降低安全库存
+
+            - 检查未结采购订单
+
+            - 检查生产计划
+
+            - 检查BOM使用情况
+
+            - 检查销售需求
+
+            - 调拨到其他仓库
+
+            - 替代使用
+
+            - 供应商退货
+
+            - 折价销售
+
+            - 客户协商消耗
+
+            - 技术部门确认是否可继续使用
+
+            - 最终报废
+
+
+            报告需要优先关注高库存金额、超期时间较长的物料。
+
+
+            不要编造ERP系统中没有提供的数据。
+
+
+            重要约束：
+
+
+            1. 报告日期不得根据 last_date、idle_days_actual 或其他业务日期自行推算。
+
+            如果输入数据没有提供 report_date，则不要输出“报告日期”。
+
+
+            2. 禁止输出 SVG、HTML、Mermaid、图形代码、图片占位符。
+
+            只能输出 Markdown 标题、Markdown 表格、普通文本和列表。
+
+
+            3. warehouse 仅代表 ERPNext 中记录的仓库名称。
+
+            不得仅根据仓库名称直接判断采购、物流、收货、质检或业务流程状态。
+
+
+            4. 当前输入数据如果只包含：
+
+            item_code、warehouse、actual_qty、valuation_rate、stock_value、
+
+            last_date、idle_days_actual、idle_days_limit、is_idle，
+
+            则只能判断“库存已经满足呆滞条件”，不能确定具体呆滞原因。
+
+
+            5. 对无法从现有数据直接证明的原因，必须使用：
+
+            “可能原因”
+
+            “建议核查”
+
+            “若存在……则可能……”
+
+            等表达。
+
+
+            禁止使用：
+
+            “一定是”
+
+            “说明就是”
+
+            “证明”
+
+            “极有可能是”
+
+            等证据不足的确定性表达。
+
+
+            6. 不得虚构采购订单、销售订单、生产订单、BOM、供应商、客户、
+
+            项目、物流、质检、MRP等输入数据中没有提供的信息。
+
+
+            7. 处理建议必须区分：
+
+            - 当前数据即可支持的措施
+
+            - 需要进一步查询 ERP 数据后才能决定的措施
+
+
+            8. 对最后业务日期的描述统一使用：
+
+            “系统查询到的最后库存业务日期为 XXXX-XX-XX”
+
+            不要自行扩展成“自该日期起没有任何出入库业务”，除非输入数据能够证明这一点。'
+        - id: 30690f8f-3188-44d2-9322-c5ceeaba71ab
+          role: user
+          text: '请分析以下ERPNext呆滞库存数据。
+
+
+            呆滞物料数量：
+
+            {{#1787207979797.count#}}
+
+
+            呆滞物料明细：
+
+            {{#1787207979797.idle_items_text#}}
+
+
+            请分析以下 ERPNext 呆滞库存数据。
+
+
+            呆滞物料数量：
+
+            [代码执行4 / count]
+
+
+            呆滞物料明细：
+
+            [代码执行4 / idle_items_text]
+
+
+            请生成《呆滞库存分析报告》。
+
+
+            不要生成报告日期。
+
+
+            报告必须包含：
+
+
+            一、总体情况
+
+            - 呆滞物料数量
+
+            - 呆滞库存总金额
+
+            - 总呆滞库存数量
+
+            - 整体风险评价
+
+
+            二、呆滞物料明细
+
+            使用 Markdown 表格展示：
+
+            - 物料编码
+
+            - 仓库
+
+            - 当前库存数量
+
+            - 单价
+
+            - 库存金额
+
+            - 最后业务日期
+
+            - 实际呆滞天数
+
+            - 呆滞标准
+
+            - 超期天数
+
+            - 风险等级
+
+
+            三、单品分析
+
+            针对每个呆滞物料分别说明：
+
+
+            1. 当前可确认的事实
+
+            2. 可能的呆滞原因
+
+            3. 建议进一步核查的数据
+
+            4. 当前可立即执行的处理建议
+
+            5. 需要取得更多 ERP 数据后才能决定的处理建议
+
+
+            风险等级规则：
+
+
+            高风险：
+
+            库存金额 >= 100000
+
+            或者实际呆滞天数 >= 365
+
+
+            中风险：
+
+            库存金额 >= 50000
+
+            或者实际呆滞天数 >= 180
+
+
+            低风险：
+
+            其他情况
+
+
+            四、总体可能原因
+
+            只能总结“可能存在”的管理问题，不得写成已经确认的问题。
+
+
+            五、处理建议
+
+
+            按优先级输出：
+
+
+            P1：立即处理
+
+            P2：重点核查
+
+            P3：持续监控
+
+
+            六、管理层摘要
+
+
+            简要说明：
+
+            - 当前呆滞库存风险
+
+            - 最值得关注的物料
+
+            - 下一步最应该查询哪些 ERP 数据
+
+            - 当前可以先采取什么措施
+
+
+            特别要求：
+
+
+            禁止输出 SVG。
+
+            禁止输出 HTML。
+
+            禁止输出 Mermaid。
+
+            禁止输出任何图片或图表占位符。
+
+
+            不得把推测写成事实。
+
+            不得虚构 ERP 数据。'
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1787209260896'
+      position:
+        x: 556.144
+        y: 461.6528
+      positionAbsolute:
+        x: 556.144
+        y: 461.6528
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1787209260896'
+          - text
+          variable_selector:
+          - conversation
+          - report_text
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1787207979797'
+          - idle_items
+          variable_selector:
+          - conversation
+          - idle_items
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 108
+      id: '1787218314482'
+      position:
+        x: 556.144
+        y: 586.9328
+      positionAbsolute:
+        x: 556.144
+        y: 586.9328
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-571
+            key: ''
+            type: text
+            value: "{\n  \"file_type\": \"excel\",\n  \"filename\": \"呆滞库存分析报告\",\n\
+              \  \"title\": \"ERP呆滞库存分析报告\",\n  \"content\": [\n    {\n      \"sheet_name\"\
+              : \"呆滞库存\",\n      \"columns\": [\n        \"物料号\",\n        \"数量\"\
+              ,\n        \"金额\",\n        \"呆滞天数\"\n      ],\n      \"rows\": [\n\
+              \        [\n          \"SKU009\",\n          76,\n          53200,\n\
+              \          226\n        ]\n      ]\n    }\n  ]\n}"
+          type: json
+        headers: Content-Type:application/json
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP3 - 生成文件的web服务
+        type: http-request
+        url: http://192.168.191.142:9000/generate
+        variables: []
+      height: 135
+      id: '1787222897989'
+      position:
+        x: 556.144
+        y: 739.1696000000002
+      positionAbsolute:
+        x: 556.144
+        y: 739.1696000000002
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '✅ 文件生成完成。
+
+          {{#1787209260896.text#}}
+
+
+          数据文件下载地址：
+
+          [点击下载文件]
+
+          {{#1787295903749.download_url#}}'
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 152
+      id: '1787235306977'
+      position:
+        x: 556.144
+        y: 1017.296569669245
+      positionAbsolute:
+        x: 556.144
+        y: 1017.296569669245
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        code: "def main(arg1: str) -> dict:\n    import json\n\n    data = json.loads(arg1)\n\
+          \n    return {\n        \"filename\": data[\"filename\"],\n        \"download_url\"\
+          : data[\"download_url\"]\n    }"
+        code_language: python3
+        outputs:
+          download_url:
+            children: null
+            type: string
+          filename:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 5
+        type: code
+        variables:
+        - value_selector:
+          - '1787222897989'
+          - body
+          value_type: string
+          variable: arg1
+      height: 50
+      id: '1787295903749'
+      position:
+        x: 556.144
+        y: 924.1565696692452
+      positionAbsolute:
+        x: 556.144
+        y: 924.1565696692452
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    viewport:
+      x: 53.71544112068807
+      y: -124.19025049274734
+      zoom: 0.7254588027467701
+  rag_pipeline_variables: []

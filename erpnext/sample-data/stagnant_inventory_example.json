@@ -1,0 +1,18 @@
+{
+  "analysis_type": "stagnant_inventory",
+  "conditions": {
+    "item_group": "Raw Material",
+    "idle_days": 180,
+    "min_stock_value": 50000
+  },
+  "result": [
+    {
+      "item_code": "SKU009",
+      "actual_qty": 76,
+      "stock_value": 53200,
+      "valuation_rate": 700,
+      "idle_days_actual": 226,
+      "is_idle": true
+    }
+  ]
+}
